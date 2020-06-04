@@ -1,0 +1,12 @@
+<div class="right" *ngIf="tradecharts">
+    <h3>asoidjioasjdoasdsa :</h3>
+    <ul>
+      <li *ngFor="let tradechart of tradecharts | async">
+        <h3>{{ tradechart.time }}</h3>
+        <h3>{{ tradechart.open }}</h3>
+        <h3>{{ tradechart.high }}</h3>
+        <h3>{{ tradechart.low }}</h3>
+        <h3>{{ tradechart.close }}</h3>
+      </li>
+    </ul>
+  </div>
