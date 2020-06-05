@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store'
-import { TradeChart } from './../trade-chart.model'
+import { TradeChart } from '../models/trade-chart.model'
 
 // 2 - Definición del tipo de acción
 export const ADD_TRADECHART = 'Add tradechart'

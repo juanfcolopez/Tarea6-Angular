@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { TradeChart } from './../trade-chart.model';
+import { TradeChart } from '../models/trade-chart.model';
 import { AppState } from './../app.state';
 import { createChart } from 'lightweight-charts';
 

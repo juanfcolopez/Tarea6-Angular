@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs/Rx";
-import { WebsocketService } from "./websocket.service";
+import { WebsocketService } from "../ws-service/websocket.service";
 
 const market = "BTCUSDT"
 const STOCK_URL = "wss://stream.binance.com:9443/ws/"+market.toLowerCase()+"@kline_1h";

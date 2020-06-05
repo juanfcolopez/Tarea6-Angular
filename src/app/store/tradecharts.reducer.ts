@@ -1,5 +1,5 @@
 // 1 - Importaciones
-import { TradeChart } from './../trade-chart.model'
+import { TradeChart } from '../models/trade-chart.model'
 import * as TradeChartActions from './TradeChart.actions'
 
 // 2 - Estado inicial

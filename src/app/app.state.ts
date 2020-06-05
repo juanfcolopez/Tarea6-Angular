@@ -1,4 +1,4 @@
-import { TradeChart } from './trade-chart.model';
+import { TradeChart } from './models/trade-chart.model';
 
 export interface AppState {
   readonly tradecharts: TradeChart[];

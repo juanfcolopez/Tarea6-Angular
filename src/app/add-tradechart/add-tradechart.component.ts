@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './../app.state';
 import * as TradeChartActions from './../store/TradeChart.actions';
-import { WebsocketService } from '../websocket.service';
-import { TradeChartCandleService } from '../tradechartcandle.service';
+import { WebsocketService } from '../ws-service/websocket.service';
+import { TradeChartCandleService } from '../services/tradechartcandle.service';
 
 @Component({
   selector: 'app-add-tradechart',
