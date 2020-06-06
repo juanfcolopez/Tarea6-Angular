@@ -21,7 +21,6 @@ export class TradeService {
     this.trades = <Subject<Trade>>wsService.connect(TRADE_URL).map(
       (response: MessageEvent): Trade => {
         let data = JSON.parse(response.data);
-        console.log(data);
         return {
           time: this.timeConverter(data.E),
           amount: data.q,

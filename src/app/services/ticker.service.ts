@@ -22,7 +22,6 @@ export class TickerService {
     this.tickers = <Subject<Ticker>>wsService.connect(TICKER_URL).map(
       (response: MessageEvent): Ticker => {
         let data = JSON.parse(response.data);
-        console.log(data);
         return {
             volume: Math.round(data.v*100)/100,
             variation: Math.round((data.c - data.o)/data.o*10000)/100,

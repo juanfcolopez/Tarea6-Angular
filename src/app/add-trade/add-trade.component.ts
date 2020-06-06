@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './../app.state';
 import * as TradeActions from './../store/trade.actions';
@@ -12,18 +12,17 @@ import { TradeService } from '../services/trade.service';
   styleUrls: ['./add-trade.component.css'],
   providers: [WebsocketService, TradeService]
 })
-export class AddTradeComponent implements OnInit {
+export class AddTradeComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<AppState>,
     private tradeservice: TradeService
-  ) {
-    tradeservice.trades.subscribe(trade => {
-      this.addTrade(trade.time, trade.amount, trade.price, trade.side);
-    })
-   }
+  ) {}
 
   ngOnInit() {
+    this.tradeservice.trades.subscribe(trade => {
+      this.addTrade(trade.time, trade.amount, trade.price, trade.side);
+    })
   }
   // Disparamos la accion
   addTrade(time, amount, price, side) {
@@ -35,5 +34,9 @@ export class AddTradeComponent implements OnInit {
     })
     )
   }
+
+  ngOnDestroy() {
+    this.tradeservice.trades.unsubscribe();
+   }
 
 }

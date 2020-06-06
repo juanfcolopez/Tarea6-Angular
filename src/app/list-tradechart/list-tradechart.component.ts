@@ -13,7 +13,6 @@ import { createChart } from 'lightweight-charts';
 
 export class ListTradechartComponent implements OnInit {
 
-  public 
   strPad(n) {
     return String("00" + n).slice(-2);
   }
