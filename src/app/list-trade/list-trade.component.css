@@ -1,67 +1,44 @@
-.StockData {
-    color: white;
-    height: 100%;
-    display:flex;
-    align-items:center;
-  }
 
+.StockTradesData {
+  color: white;
+  width: 100%;
+}
 
-  .StockData table {
-    width: 100%;
-  }
+.StockTradesData table {
+  width: 100%;
+}
 
-  .StockData table tr {
-    text-align: left;
-  }
+.StockTradesData thead, .StockTradesData tbody {
+  width: 100%;
+  display: block;
+}
 
-  .StockData table td {
-    text-align: right;
-  }
+.StockTradesData thead {
+  width: calc(100% - 1em);
+}
 
-  .StockData table th {
-    width: 100%;
-  }
+.StockTradesData tbody{
+  height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
-  .StockTradesData {
-    color: white;
-    width: 100%;
-  }
+.StockTradesData td{
+  /* border: 1px solid white; */
+  width: 100px;
+  text-align: right;
+}
 
-  .StockTradesData table {
-    width: 100%;
-  }
+.StockTradesData tr{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
 
-  .StockTradesData thead, .StockTradesData tbody {
-    width: 100%;
-    display: block;
-  }
+.StockTradesData .buyOrder{
+  background-color: rgba(240, 83, 89, 0.3);
+}
 
-  .StockTradesData thead {
-    width: calc(100% - 1em);
-  }
-
-  .StockTradesData tbody{
-    height: 150px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .StockTradesData td{
-    /* border: 1px solid white; */
-    width: 100px;
-    text-align: right;
-  }
-
-  .StockTradesData tr{
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  .StockTradesData .buyOrder{
-    background-color: rgba(240, 83, 89, 0.3);
-  }
-
-  .StockTradesData .sellOrder{
-    background-color: rgba(22, 177, 87, 0.3);
-  }
+.StockTradesData .sellOrder{
+  background-color: rgba(22, 177, 87, 0.3);
+}

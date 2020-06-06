@@ -14,7 +14,7 @@ const initialState: Trade = {
 export function TradeReducer(state: Trade[] = [initialState], action: TradeActions.Actions) {
   switch (action.type) {
     case TradeActions.ADD_TRADE:
-      return [...state, action.payload];
+      return [action.payload, ...state.slice(0,20)];
     default:
       return state;
   }

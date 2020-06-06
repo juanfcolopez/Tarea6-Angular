@@ -1,0 +1,23 @@
+.StockData {
+    color: white;
+    height: 100%;
+    display:flex;
+    align-items:center;
+  }
+
+
+  .StockData table {
+    width: 100%;
+  }
+
+  .StockData table tr {
+    text-align: left;
+  }
+
+  .StockData table td {
+    text-align: right;
+  }
+
+  .StockData table th {
+    width: 100%;
+  }
