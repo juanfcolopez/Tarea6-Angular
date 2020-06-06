@@ -14,7 +14,7 @@ import { TradeChartCandleService } from '../services/tradechartcandle.service';
 export class AddTradechartComponent implements OnInit {
 
   constructor(
-    private store: Store,
+    private store: Store<AppState>,
     private tradechartcandleservice: TradeChartCandleService
   ) {
     tradechartcandleservice.candles.subscribe(candle => {

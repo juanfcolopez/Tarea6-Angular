@@ -1,0 +1,25 @@
+<div class="right" *ngIf="trades">
+  <div className="StockTradesData">
+    <ul>
+      <li *ngFor="let trade of trades | async">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Amount</th>
+              <th>Price</th>
+              <th>Side</th>
+            </tr>
+          </thead>
+          <tbody>
+              <td>{{trade.time}}</td>
+              <td>{{trade.amount}}</td>
+              <td>{{trade.price}}</td>
+              <td>{{trade.side}}</td>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </div>
+</div>
+  

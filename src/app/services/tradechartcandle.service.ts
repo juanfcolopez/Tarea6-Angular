@@ -22,6 +22,7 @@ export class TradeChartCandleService {
     this.candles = <Subject<Candle>>wsService.connect(STOCK_URL).map(
       (response: MessageEvent): Candle => {
         let data = JSON.parse(response.data);
+
         return {
           time: data.k.t,
           open: data.k.o,
