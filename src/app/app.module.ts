@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { TradeChartReducer } from './store/tradecharts.reducer'
 import { TradeReducer } from './store/trade.reducer'
+import { TickerReducer } from './store/ticker.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { AddTradechartComponent } from './add-tradechart/add-tradechart.componen
 import { ListTradechartComponent } from './list-tradechart/list-tradechart.component';
 import { AddTradeComponent } from './add-trade/add-trade.component';
 import { ListTradeComponent } from './list-trade/list-trade.component';
+import { AddTickerComponent } from './add-ticker/add-ticker.component';
+import { ListTickerComponent } from './list-ticker/list-ticker.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,14 @@ import { ListTradeComponent } from './list-trade/list-trade.component';
     AddTradechartComponent,
     ListTradechartComponent,
     AddTradeComponent,
-    ListTradeComponent
+    ListTradeComponent,
+    AddTickerComponent,
+    ListTickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({tradecharts: TradeChartReducer, trades: TradeReducer}),
+    StoreModule.forRoot({tradecharts: TradeChartReducer, trades: TradeReducer, tickers: TickerReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]
