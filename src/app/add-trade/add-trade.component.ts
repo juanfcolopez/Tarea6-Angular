@@ -1,3 +1,4 @@
+/*
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './../app.state';
@@ -20,23 +21,14 @@ export class AddTradeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.tradeservice.trades.subscribe(trade => {
-      this.addTrade(trade.time, trade.amount, trade.price, trade.side);
-    })
+  
   }
   // Disparamos la accion
-  addTrade(time, amount, price, side) {
-    this.store.dispatch( new TradeActions.AddTrade({
-      time: time,
-      amount: amount,
-      price: price,
-      side: side
-    })
-    )
-  }
+
 
   ngOnDestroy() {
     this.tradeservice.trades.unsubscribe();
    }
 
 }
+*/

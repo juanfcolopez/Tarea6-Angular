@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+/* import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './../app.state';
 import * as TickerActions from './../store/ticker.actions';
@@ -19,22 +19,13 @@ export class AddTickerComponent implements OnInit, OnDestroy {
   ){}
 
   ngOnInit() {
-      this.tickerservice.tickers.subscribe(ticker => {
-        this.addTicker(ticker.volume, ticker.variation, ticker.high, ticker.low, ticker.last);
-    })  
+      
   }
 
-  addTicker(volume, variation, high, low, last) {
-    this.store.dispatch( new TickerActions.AddTicker({
-        volume: volume,
-        variation: variation,
-        high: high,
-        low: low,
-        last: last
-    })
-  )}
+
 
   ngOnDestroy() {
     this.tickerservice.tickers.unsubscribe();
   }
 }
+ */

@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs/Rx";
 import { WebsocketService } from "../ws-service/websocket.service";
+import * as TickerActions from './../store/ticker.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from './../app.state';
 
 
-const market = "BTCUSDT"
-const TICKER_URL = "wss://stream.binance.com:9443/ws/"+market.toLowerCase()+"@ticker"
+const TICKER_URL = (ticker) => ("wss://stream.binance.com:9443/ws/"+ticker.toLowerCase()+"@ticker");
 export interface Ticker {
     volume: number;
     variation: number;
@@ -18,8 +20,23 @@ export interface Ticker {
 export class TickerService {
   public tickers: Subject<Ticker>;
 
-  constructor(wsService: WebsocketService) {
-    this.tickers = <Subject<Ticker>>wsService.connect(TICKER_URL).map(
+  constructor(wsService: WebsocketService,  private store: Store<AppState>) {
+    this.openConnection(wsService, "BTCUSDT");
+   
+  }
+
+  addTicker(volume: number, variation: number, high: number, low: number, last: number) {
+    this.store.dispatch( new TickerActions.AddTicker({
+        volume: volume,
+        variation: variation,
+        high: high,
+        low: low,
+        last: last
+    })
+  )}
+
+  openConnection (wsService: WebsocketService, stock_ticker: string) {
+    this.tickers = <Subject<Ticker>>wsService.connect(TICKER_URL(stock_ticker)).map(
       (response: MessageEvent): Ticker => {
         let data = JSON.parse(response.data);
         return {
@@ -31,6 +48,16 @@ export class TickerService {
         };
       }
     );
+
+    this.tickers.subscribe(ticker => {
+      this.addTicker(ticker.volume, ticker.variation, ticker.high, ticker.low, ticker.last);
+  }) 
   }
+
+  closeConnection () {
+    this.tickers.unsubscribe();
+  }
+
+
  
 }

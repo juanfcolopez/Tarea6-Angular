@@ -1,0 +1,14 @@
+<div class="content" role="main">
+</div>
+
+<div class="stocks-div">
+  <div *ngFor="let stock of stocks">
+      <div class="stock-div" (click)="stockClicked(stock.id)">
+          <span class="symbol">{{ stock.id }}</span>
+      </div>
+  </div>
+</div>
+<div class="ticker-info-div">
+  
+</div>
+<router-outlet></router-outlet>

@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from './../app.state';
-import * as TradeChartActions from './../store/TradeChart.actions';
+/* import { Component, OnInit, OnDestroy } from '@angular/core';
+
+
 import { WebsocketService } from '../ws-service/websocket.service';
 import { TradeChartCandleService } from '../services/tradechartcandle.service';
 
@@ -14,7 +13,7 @@ import { TradeChartCandleService } from '../services/tradechartcandle.service';
 export class AddTradechartComponent implements OnInit, OnDestroy {
 
   constructor(
-    private store: Store<AppState>,
+    
     private tradechartcandleservice: TradeChartCandleService
   ) {}
 
@@ -26,18 +25,10 @@ export class AddTradechartComponent implements OnInit, OnDestroy {
   
   }
   // Disparamos la accion
-  addTradeChart(time, open, high, low, close) {
-    this.store.dispatch( new TradeChartActions.AddTradeChart({
-      time: time,
-      open: open,
-      high: high,
-      low: low,
-      close: close
-    })
-    )
-  }
+ 
 
   ngOnDestroy() {
-    this.tradechartcandleservice.candles.unsubscribe();
+    
    }
 }
+ */
