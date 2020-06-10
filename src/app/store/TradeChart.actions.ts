@@ -1,14 +1,18 @@
 import { Action } from '@ngrx/store'
 import { TradeChart } from '../models/trade-chart.model'
 
-// 2 - Definición del tipo de acción
-export const ADD_TRADECHART = 'Add tradechart'
+export const ADD_TRADECHART = 'Add data to tradechart';
+export const SET_TRADECHART = 'Set tradechart data';
 
-// 3 - Creación de la clase tipo AddTask
 export class AddTradeChart implements Action {
   readonly type = ADD_TRADECHART
   constructor(public payload: TradeChart) { }
-}
+};
 
-// 4 - Exportación de la acción
-export type Actions = AddTradeChart
+export class SetTradeChart implements Action {
+  readonly type = SET_TRADECHART
+  constructor(public payload: TradeChart[]) { }
+};
+
+
+export type Actions = AddTradeChart | SetTradeChart

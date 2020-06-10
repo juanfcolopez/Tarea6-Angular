@@ -17,8 +17,9 @@ export class ListTradeComponent implements OnInit {
 
   trades: Observable<Trade[]>;
   constructor(
-    private store: Store<AppState>
-  ) { 
+    private store: Store<AppState>,
+    private service: TradeService
+  ) {
     // Accedemos a la store:
     this.trades = this.store.select('trades');
   }

@@ -1,21 +1,53 @@
-.stock-div{
-    display: block;
-}
-.stock-div .symbol{
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    color: #0000fc;
-}
-.stock-div .symbol:hover{
-    text-decoration: underline;
+.StockList {
+  color: white;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
 }
 
-.stock-div .company-name{
-    font-size: 13px;
-    padding-left: 5px;
+.StockList ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
 }
-.ticker-info-div{
-    float: left;
-    width: 70%;
+
+.StockList ul li {
+  width: 100%;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  background-color: #1b1b2f;
+}
+
+.StockList ul li:hover {
+  background-color: rgba(38,198,218, 0.56);
+  cursor: pointer;
+}
+
+.StockList .collapseButton {
+  width: 100%;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.StockList span {
+  display: inline-block;
+  width: 80%;
+}
+.StockList svg {
+  display: inline-block;
+  width: 20%;
+}
+
+.selected {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(38,198,218, 0.56) !important;
+}
+
+.StockList ul li div {
+  text-align: center;
 }

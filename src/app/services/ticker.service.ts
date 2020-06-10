@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs/Rx";
+import { Ticker } from '../models/ticker.model';
 import { WebsocketService } from "../ws-service/websocket.service";
 import * as TickerActions from './../store/ticker.actions';
 import { Store } from '@ngrx/store';
@@ -7,14 +8,6 @@ import { AppState } from './../app.state';
 
 
 const TICKER_URL = (ticker) => ("wss://stream.binance.com:9443/ws/"+ticker.toLowerCase()+"@ticker");
-export interface Ticker {
-    volume: number;
-    variation: number;
-    high: number;
-    low: number;
-    last: number;
-}
-
 
 @Injectable()
 export class TickerService {
@@ -22,7 +15,6 @@ export class TickerService {
 
   constructor(wsService: WebsocketService,  private store: Store<AppState>) {
     this.openConnection(wsService, "BTCUSDT");
-   
   }
 
   addTicker(volume: number, variation: number, high: number, low: number, last: number) {
@@ -51,7 +43,7 @@ export class TickerService {
 
     this.tickers.subscribe(ticker => {
       this.addTicker(ticker.volume, ticker.variation, ticker.high, ticker.low, ticker.last);
-  }) 
+    })
   }
 
   closeConnection () {
@@ -59,5 +51,5 @@ export class TickerService {
   }
 
 
- 
+
 }

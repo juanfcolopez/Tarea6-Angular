@@ -1,32 +1,26 @@
-<div class="left" *ngIf="tickers">
-    <ul>
-        <li *ngFor="let ticker of tickers | async">
-            <div className="StockData">
-                <table>
-                <tbody>
-                <tr>
-                    <th>Volume 24hs:</th>
-                    <td>{{ticker.volume}}</td>
-                </tr>
-                <tr>
-                    <th>High 24hs:</th>
-                    <td>{{ticker.high}}</td>
-                </tr>
-                <tr>
-                    <th>Low 24hs:</th>
-                    <td>{{ticker.low}}</td>
-                </tr>
-                <tr>
-                    <th>Last Price:</th>
-                    <td>{{ticker.last}}</td>
-                </tr>
-                <tr>
-                    <th>Variation 24hs:</th>
-                    <td>{{ticker.variation}}%</td>
-                </tr>
-                </tbody>
-                </table>
-            </div>
-        </li>
-    </ul>
+<div class="StockData">
+    <table>
+    <tbody>
+    <tr>
+        <th>Volume 24hs:</th>
+        <td>{{ (ticker | async)?.volume }}</td>
+    </tr>
+    <tr>
+        <th>High 24hs:</th>
+        <td>{{ ticker | async }}</td>
+    </tr>
+    <tr>
+        <th>Low 24hs:</th>
+        <td>{{ (ticker | async)?.low }}</td>
+    </tr>
+    <tr>
+        <th>Last Price:</th>
+        <td>{{ (ticker | async)?.last }}</td>
+    </tr>
+    <tr>
+        <th>Variation 24hs:</th>
+        <td>{{ (ticker | async)?.variation }}%</td>
+    </tr>
+    </tbody>
+    </table>
 </div>

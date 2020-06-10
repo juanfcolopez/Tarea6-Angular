@@ -15,7 +15,7 @@ const initialState: Ticker = {
 export function TickerReducer(state: Ticker[] = [initialState], action: TickerActions.Actions) {
   switch (action.type) {
     case TickerActions.ADD_TICKER:
-      return [action.payload];
+      return action.payload;
     default:
       return state;
   }

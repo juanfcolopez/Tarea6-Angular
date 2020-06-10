@@ -1,14 +1,11 @@
-<div class="content" role="main">
+<div class="StockList">
+  <ul>
+    <li *ngFor="let stock of stocks">
+        <div [className]="selectedStock === stock.id? 'selected' : 'unselected'" (click)="stockClicked(stock.id)">
+            {{ stock.id }}
+        </div>
+    </li>
+  </ul>
 </div>
 
-<div class="stocks-div">
-  <div *ngFor="let stock of stocks">
-      <div class="stock-div" (click)="stockClicked(stock.id)">
-          <span class="symbol">{{ stock.id }}</span>
-      </div>
-  </div>
-</div>
-<div class="ticker-info-div">
-  
-</div>
 <router-outlet></router-outlet>

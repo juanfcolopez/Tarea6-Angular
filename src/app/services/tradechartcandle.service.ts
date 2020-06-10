@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs/Rx";
+import { HttpClient } from '@angular/common/http';
+
 import { WebsocketService } from "../ws-service/websocket.service";
 import { WindowRef } from "../services/windowRef.service";
 import { Store } from '@ngrx/store';
@@ -10,10 +12,10 @@ const STOCK_URL = (ticker) => ("wss://stream.binance.com:9443/ws/"+ticker.toLowe
 
 export interface Candle {
   time: string;
-  open: string;
-  high: string;
-  low: string;
-  close: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
 }
 
 
@@ -21,11 +23,33 @@ export interface Candle {
 export class TradeChartCandleService {
   public candles: Subject<Candle>;
 
-  constructor(wsService: WebsocketService, private store: Store<AppState>, private windowRef: WindowRef) {
+  constructor(wsService: WebsocketService,
+              private store: Store<AppState>,
+              private windowRef: WindowRef,
+              protected http: HttpClient) {
+    this.getHistory("BTCUSDT");
     this.openConnection(wsService, "BTCUSDT");
   }
 
-  addTradeChart = (time:string , open: string, high:string, low:string, close:string) => {
+  getHistory(stock_trade: string) {
+    this.http.get<Array<Array<string|number>>>("https://api.binance.com/api/v3/klines?symbol="+stock_trade+"&interval=1h")
+    .subscribe(
+      (data) => { // Success
+        let candles = data.map((o,i) => { return({  time: o[0].toString(),
+                                                    open: Number(o[1]),
+                                                    high: Number(o[2]),
+                                                    low: Number(o[3]),
+                                                    close: Number(o[4]) });
+        });
+        this.store.dispatch( new TradeChartActions.SetTradeChart(candles) );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  addTradeChart = (time:string , open:number, high:number, low:number, close:number) => {
     this.store.dispatch( new TradeChartActions.AddTradeChart({
       time: time,
       open: open,
@@ -42,10 +66,10 @@ export class TradeChartCandleService {
 
         return {
           time: data.k.t,
-          open: data.k.o,
-          high: data.k.h,
-          low: data.k.l,
-          close: data.k.c
+          open: Number(data.k.o),
+          high: Number(data.k.h),
+          low: Number(data.k.l),
+          close: Number(data.k.c)
         };
       }
     );

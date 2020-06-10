@@ -1,8 +1,20 @@
-<div id="TradeChart"></div>
 <div class="container">
-  <app-list-ticker></app-list-ticker>
-  <app-list-tradechart></app-list-tradechart>
-  <app-list-trade></app-list-trade>
+  <div class="row">
+    <div class="col-sx-12 col-md-12 col-lg-3">
+      <app-stocks></app-stocks>
+    </div>
+    <div class="col-sx-12 col-md-12 col-lg-9">
+      <app-list-tradechart></app-list-tradechart>
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-6">
+          <app-list-ticker></app-list-ticker>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-6">
+          <app-list-trade></app-list-trade>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

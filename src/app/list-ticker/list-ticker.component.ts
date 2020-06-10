@@ -13,11 +13,13 @@ import { TickerService } from '../services/ticker.service';
   providers: [WebsocketService, TickerService]
 })
 export class ListTickerComponent implements OnInit {
-  tickers: Observable<Ticker[]>;
+  ticker: Observable<Ticker>;
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private service: TickerService
   ) {
-    this.tickers = this.store.select('tickers');
+    this.ticker = this.store.select('ticker');
+    this.ticker.subscribe((g) => { console.log(g); });
    }
 
   ngOnInit(){
