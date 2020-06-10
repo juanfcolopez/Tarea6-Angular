@@ -6,4 +6,5 @@ export interface AppState {
   readonly tradecharts: TradeChart[];
   readonly trades: Trade[];
   readonly ticker: Ticker;
+  readonly tickers: Ticker;
 }

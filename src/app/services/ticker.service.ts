@@ -11,7 +11,7 @@ const TICKER_URL = (ticker) => ("wss://stream.binance.com:9443/ws/"+ticker.toLow
 
 @Injectable()
 export class TickerService {
-  public tickers: Subject<Ticker>;
+  public ticker: Subject<Ticker>;
 
   constructor(wsService: WebsocketService,  private store: Store<AppState>) {
     this.openConnection(wsService, "BTCUSDT");
@@ -28,7 +28,7 @@ export class TickerService {
   )}
 
   openConnection (wsService: WebsocketService, stock_ticker: string) {
-    this.tickers = <Subject<Ticker>>wsService.connect(TICKER_URL(stock_ticker)).map(
+    this.ticker = <Subject<Ticker>>wsService.connect(TICKER_URL(stock_ticker)).map(
       (response: MessageEvent): Ticker => {
         let data = JSON.parse(response.data);
         return {
@@ -41,13 +41,13 @@ export class TickerService {
       }
     );
 
-    this.tickers.subscribe(ticker => {
+    this.ticker.subscribe(ticker => {
       this.addTicker(ticker.volume, ticker.variation, ticker.high, ticker.low, ticker.last);
     })
   }
 
   closeConnection () {
-    this.tickers.unsubscribe();
+    this.ticker.unsubscribe();
   }
 
 

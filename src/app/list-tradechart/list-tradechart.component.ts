@@ -89,7 +89,7 @@ export class ListTradechartComponent implements AfterContentInit {
         let data_candles = data.tradecharts;
         console.log(data_candles);
         let candles = data_candles.map((candle) => ({
-          time: candle.time.toString(),
+          time: candle.time,
           open: candle.open,
           close: candle.close,
           high: candle.high,

@@ -1,25 +1,25 @@
-<div class="StockData">
+<div *ngIf="ticker | async as ticker" class="StockData">
     <table>
     <tbody>
     <tr>
         <th>Volume 24hs:</th>
-        <td>{{ (ticker | async)?.volume }}</td>
+        <td>{{ ticker.volume }}</td>
     </tr>
     <tr>
         <th>High 24hs:</th>
-        <td>{{ ticker | async }}</td>
+        <td>{{ ticker.high }}</td>
     </tr>
     <tr>
         <th>Low 24hs:</th>
-        <td>{{ (ticker | async)?.low }}</td>
+        <td>{{ ticker.low }}</td>
     </tr>
     <tr>
         <th>Last Price:</th>
-        <td>{{ (ticker | async)?.last }}</td>
+        <td>{{ ticker.last }}</td>
     </tr>
     <tr>
         <th>Variation 24hs:</th>
-        <td>{{ (ticker | async)?.variation }}%</td>
+        <td>{{ ticker.variation }}%</td>
     </tr>
     </tbody>
     </table>
