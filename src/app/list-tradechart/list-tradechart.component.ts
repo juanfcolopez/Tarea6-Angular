@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { TradeChart } from '../models/trade-chart.model';
 import { AppState } from './../app.state';
-import { createChart, MouseEventParams, CrosshairOptions } from 'lightweight-charts';
+import { createChart, MouseEventParams, CrosshairOptions, UTCTimestamp } from 'lightweight-charts';
 import { WebsocketService } from '../ws-service/websocket.service';
 import { TradeChartCandleService } from '../services/tradechartcandle.service';
 import { WindowRef } from '../services/windowRef.service';
@@ -25,30 +25,13 @@ export class ListTradechartComponent implements AfterContentInit {
       height: 350,
       localization: {
         locale: 'es-CL',
-        priceFormatter: function(timestamp) {
-          const a = new Date(timestamp*1000);
-          const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-          const year = a.getFullYear();
-          const month = months[a.getMonth()];
-          const date = a.getDate();
-          const datetime = year + '-' + month + '-' + date;
-          return datetime;
-        },
-        timeFormatter: function(timestamp) {
-          const a = new Date(timestamp*1000);
-          const hour = a.getHours();
-          const min = a.getMinutes();
-          const sec = a.getSeconds();
-          const time = String("00" + hour).slice(-2) + ':' + String("00" + min).slice(-2) + ':' + String("00" + sec).slice(-2) ;
-          return time;
-        }
       },
       priceScale: {
         scaleMargins: {
           top: 0.3,
           bottom: 0.25,
         },
-        borderVisible: false,
+        borderVisible: true,
       },
       layout: {
         backgroundColor: '#131722',
@@ -87,16 +70,19 @@ export class ListTradechartComponent implements AfterContentInit {
     this.store.select(state => state).subscribe(data => {
       if (data.tradecharts[0].time !== "") {
         let data_candles = data.tradecharts;
-        console.log(data_candles);
         let candles = data_candles.map((candle) => ({
-          time: candle.time,
+          time: Number(candle.time) as UTCTimestamp,
           open: candle.open,
           close: candle.close,
           high: candle.high,
           low: candle.low
         }));
-        console.log(candles);
         lineSeries.setData(candles);
+        chart.timeScale().applyOptions({
+          fixLeftEdge: true,
+          timeVisible: true,
+          visible: false,
+        });
       }
     });
   }
