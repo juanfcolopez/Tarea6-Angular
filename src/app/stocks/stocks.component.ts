@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from './../app.state';
+import * as  StockActions  from './../store/stock.actions';
+
+
 
 @Component({
   selector: 'app-stocks',
   templateUrl: './stocks.component.html',
-  styleUrls: ['./stocks.component.css']
+  styleUrls: ['./stocks.component.css'],
 })
 export class StocksComponent implements OnInit {
+  constructor(private store: Store<AppState>){}
+
+
   stocks = [
     {
       id: "BTCUSDT",
@@ -75,8 +83,9 @@ export class StocksComponent implements OnInit {
     this.selectedStock = '';
   }
 
-  stockClicked(symbol) {
+  stockClicked(symbol:string) {
     this.selectedStock = symbol;
+    this.store.dispatch( new StockActions.SetStock(symbol) );
   }
 
 }

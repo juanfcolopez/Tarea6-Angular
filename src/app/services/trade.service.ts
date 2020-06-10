@@ -21,9 +21,9 @@ export class TradeService {
   public trades: Subject<Trade>;
 
   constructor(wsService: WebsocketService, private store: Store<AppState>) {
-    
-    this.openConnection(wsService, "BTCUSDT");
-    
+    this.store.select('stock').subscribe((stock)=>{
+      this.openConnection(wsService, stock);
+    })
   }
 
   openConnection (wsService: WebsocketService, stock_trade: string) {

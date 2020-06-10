@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { TradeChartReducer } from './store/tradecharts.reducer';
 import { TradeReducer } from './store/trade.reducer';
 import { TickerReducer } from './store/ticker.reducer';
+import { StockReducer } from './store/stock.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,7 @@ import { StocksComponent } from './stocks/stocks.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({tradecharts: TradeChartReducer, trades: TradeReducer, tickers: TickerReducer}),
+    StoreModule.forRoot({tradecharts: TradeChartReducer, trades: TradeReducer, tickers: TickerReducer, stock: StockReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]

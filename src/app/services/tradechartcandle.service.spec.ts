@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TradechartcandleService } from './tradechartcandle.service';
+import { TradeChartCandleService } from './tradechartcandle.service';
 
 describe('TradechartcandleService', () => {
-  let service: TradechartcandleService;
+  let service: TradeChartCandleService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TradechartcandleService);
+    service = TestBed.inject(TradeChartCandleService);
   });
 
   it('should be created', () => {

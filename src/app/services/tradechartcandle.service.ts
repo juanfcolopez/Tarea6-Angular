@@ -27,8 +27,10 @@ export class TradeChartCandleService {
               private store: Store<AppState>,
               private windowRef: WindowRef,
               protected http: HttpClient) {
-    this.getHistory("BTCUSDT");
-    this.openConnection(wsService, "BTCUSDT");
+    this.store.select('stock').subscribe((stock)=>{
+      this.getHistory(stock);
+      this.openConnection(wsService, stock);
+  })
   }
 
   getHistory(stock_trade: string) {

@@ -67,9 +67,9 @@ export class ListTradechartComponent implements AfterContentInit {
 
     chart.resize(document.getElementById("TradeChart").clientWidth, 350);
 
-    this.store.select(state => state).subscribe(data => {
-      if (data.tradecharts[0].time !== "") {
-        let data_candles = data.tradecharts;
+    this.store.select('tradecharts').subscribe(data => {
+      if (data[0].time !== "") {
+        let data_candles = data;
         let candles = data_candles.map((candle) => ({
           time: Number(candle.time) as UTCTimestamp,
           open: candle.open,
@@ -96,3 +96,25 @@ export class ListTradechartComponent implements AfterContentInit {
     return a;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
